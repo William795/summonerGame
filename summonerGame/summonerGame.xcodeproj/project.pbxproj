@@ -8,12 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		92071A08229C2ED4000A7B75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A07229C2ED4000A7B75 /* AppDelegate.swift */; };
-		92071A0A229C2ED4000A7B75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A09229C2ED4000A7B75 /* ViewController.swift */; };
 		92071A0D229C2ED4000A7B75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92071A0B229C2ED4000A7B75 /* Main.storyboard */; };
 		92071A0F229C2ED5000A7B75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92071A0E229C2ED5000A7B75 /* Assets.xcassets */; };
 		92071A12229C2ED5000A7B75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92071A10229C2ED5000A7B75 /* LaunchScreen.storyboard */; };
 		92071A1D229C2ED5000A7B75 /* summonerGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A1C229C2ED5000A7B75 /* summonerGameTests.swift */; };
 		92071A28229C2ED5000A7B75 /* summonerGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A27229C2ED5000A7B75 /* summonerGameUITests.swift */; };
+		92071A37229C3021000A7B75 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A36229C3021000A7B75 /* Player.swift */; };
+		92071A39229C302B000A7B75 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A38229C302B000A7B75 /* Monster.swift */; };
+		92071A3B229C3032000A7B75 /* Summon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A3A229C3032000A7B75 /* Summon.swift */; };
+		92071A3E229C3051000A7B75 /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A3D229C3051000A7B75 /* PlayerController.swift */; };
+		92071A40229C3061000A7B75 /* MonsterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A3F229C3061000A7B75 /* MonsterController.swift */; };
+		92071A42229C3070000A7B75 /* SummonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A41229C3070000A7B75 /* SummonController.swift */; };
+		92071A46229C48C7000A7B75 /* startingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A45229C48C7000A7B75 /* startingViewController.swift */; };
+		92071A48229C48E4000A7B75 /* monsterSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A47229C48E4000A7B75 /* monsterSelectViewController.swift */; };
+		92071A4A229C48FB000A7B75 /* summonSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A49229C48FB000A7B75 /* summonSelectViewController.swift */; };
+		92071A4C229C491A000A7B75 /* battleScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A4B229C491A000A7B75 /* battleScreenViewController.swift */; };
+		92071A4E229C4929000A7B75 /* rewardsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A4D229C4929000A7B75 /* rewardsScreenViewController.swift */; };
+		92071A50229C4947000A7B75 /* redeploymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A4F229C4947000A7B75 /* redeploymentViewController.swift */; };
+		92071A52229C495A000A7B75 /* newSumonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A51229C495A000A7B75 /* newSumonViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +48,6 @@
 /* Begin PBXFileReference section */
 		92071A04229C2ED4000A7B75 /* summonerGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = summonerGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92071A07229C2ED4000A7B75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		92071A09229C2ED4000A7B75 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		92071A0C229C2ED4000A7B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		92071A0E229C2ED5000A7B75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92071A11229C2ED5000A7B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +58,19 @@
 		92071A23229C2ED5000A7B75 /* summonerGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = summonerGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92071A27229C2ED5000A7B75 /* summonerGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = summonerGameUITests.swift; sourceTree = "<group>"; };
 		92071A29229C2ED5000A7B75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92071A36229C3021000A7B75 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		92071A38229C302B000A7B75 /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
+		92071A3A229C3032000A7B75 /* Summon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summon.swift; sourceTree = "<group>"; };
+		92071A3D229C3051000A7B75 /* PlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
+		92071A3F229C3061000A7B75 /* MonsterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterController.swift; sourceTree = "<group>"; };
+		92071A41229C3070000A7B75 /* SummonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonController.swift; sourceTree = "<group>"; };
+		92071A45229C48C7000A7B75 /* startingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startingViewController.swift; sourceTree = "<group>"; };
+		92071A47229C48E4000A7B75 /* monsterSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = monsterSelectViewController.swift; sourceTree = "<group>"; };
+		92071A49229C48FB000A7B75 /* summonSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = summonSelectViewController.swift; sourceTree = "<group>"; };
+		92071A4B229C491A000A7B75 /* battleScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = battleScreenViewController.swift; sourceTree = "<group>"; };
+		92071A4D229C4929000A7B75 /* rewardsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rewardsScreenViewController.swift; sourceTree = "<group>"; };
+		92071A4F229C4947000A7B75 /* redeploymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = redeploymentViewController.swift; sourceTree = "<group>"; };
+		92071A51229C495A000A7B75 /* newSumonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newSumonViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +122,9 @@
 			isa = PBXGroup;
 			children = (
 				92071A35229C2EE3000A7B75 /* Resources */,
-				92071A09229C2ED4000A7B75 /* ViewController.swift */,
 				92071A0B229C2ED4000A7B75 /* Main.storyboard */,
+				92071A3C229C3038000A7B75 /* Models */,
+				92071A43229C3075000A7B75 /* Controllers */,
 			);
 			path = summonerGame;
 			sourceTree = "<group>";
@@ -131,6 +156,57 @@
 				92071A13229C2ED5000A7B75 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		92071A3C229C3038000A7B75 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				92071A36229C3021000A7B75 /* Player.swift */,
+				92071A38229C302B000A7B75 /* Monster.swift */,
+				92071A3A229C3032000A7B75 /* Summon.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		92071A43229C3075000A7B75 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				92071A44229C3089000A7B75 /* ModelControllers */,
+				92071A53229C4967000A7B75 /* ViewControllers */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		92071A44229C3089000A7B75 /* ModelControllers */ = {
+			isa = PBXGroup;
+			children = (
+				92071A3D229C3051000A7B75 /* PlayerController.swift */,
+				92071A3F229C3061000A7B75 /* MonsterController.swift */,
+				92071A41229C3070000A7B75 /* SummonController.swift */,
+			);
+			path = ModelControllers;
+			sourceTree = "<group>";
+		};
+		92071A53229C4967000A7B75 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				92071A45229C48C7000A7B75 /* startingViewController.swift */,
+				92071A49229C48FB000A7B75 /* summonSelectViewController.swift */,
+				92071A4D229C4929000A7B75 /* rewardsScreenViewController.swift */,
+				92071A47229C48E4000A7B75 /* monsterSelectViewController.swift */,
+				92071A54229C498A000A7B75 /* battleViewControllers */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		92071A54229C498A000A7B75 /* battleViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				92071A4B229C491A000A7B75 /* battleScreenViewController.swift */,
+				92071A4F229C4947000A7B75 /* redeploymentViewController.swift */,
+				92071A51229C495A000A7B75 /* newSumonViewController.swift */,
+			);
+			path = battleViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,8 +340,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92071A0A229C2ED4000A7B75 /* ViewController.swift in Sources */,
+				92071A39229C302B000A7B75 /* Monster.swift in Sources */,
+				92071A40229C3061000A7B75 /* MonsterController.swift in Sources */,
+				92071A52229C495A000A7B75 /* newSumonViewController.swift in Sources */,
+				92071A4A229C48FB000A7B75 /* summonSelectViewController.swift in Sources */,
+				92071A46229C48C7000A7B75 /* startingViewController.swift in Sources */,
+				92071A3E229C3051000A7B75 /* PlayerController.swift in Sources */,
+				92071A4E229C4929000A7B75 /* rewardsScreenViewController.swift in Sources */,
+				92071A50229C4947000A7B75 /* redeploymentViewController.swift in Sources */,
+				92071A42229C3070000A7B75 /* SummonController.swift in Sources */,
+				92071A37229C3021000A7B75 /* Player.swift in Sources */,
+				92071A48229C48E4000A7B75 /* monsterSelectViewController.swift in Sources */,
 				92071A08229C2ED4000A7B75 /* AppDelegate.swift in Sources */,
+				92071A3B229C3032000A7B75 /* Summon.swift in Sources */,
+				92071A4C229C491A000A7B75 /* battleScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,7 +529,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = summonerGame/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/summonerGame/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,7 +546,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = summonerGame/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/summonerGame/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
