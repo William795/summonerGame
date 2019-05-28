@@ -10,6 +10,8 @@ import UIKit
 
 class battleScreenViewController: UIViewController {
 
+    @IBOutlet weak var rewardsSegueButtonTapped: UIButton!
+    @IBOutlet weak var victoryUIImage: UIImageView!
     //monster UI
     
     @IBOutlet weak var monsterImageView: UIImageView!
@@ -65,15 +67,22 @@ class battleScreenViewController: UIViewController {
 
     //MARK: current instances of what i'm working with
     var currentSummon = SummonController.sharedSummon.golblin
+    var currentSummonTwo = SummonController.sharedSummon.archer
     var currentMonster = MonsterController.sharedMonster.sillyWarrior
     var currentPlayer = PlayerController.sharedPlayer.currentPlayer
+    
+    var chosenSummon: Summon?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        victoryUIImage.isHidden = true
+        rewardsSegueButtonTapped.isHidden = true
         
         //setting up player
+        currentPlayer.currentHealth = currentPlayer.maxHealth
+        currentPlayer.currentMana = currentPlayer.maxMana
+        
         updatePlayer(player: currentPlayer)
         
         //setting up monster
@@ -90,35 +99,65 @@ class battleScreenViewController: UIViewController {
     }
     
     //MARK: button functions
+    @IBAction func summonChooserButtonTapped(_ sender: Any) {
+        
+        presentAlertController()
+    }
     
     @IBAction func summonButtonTapped(_ sender: Any) {
-        switch currentPlayer.currentSummons {
+        
+        placeSummon(player: currentPlayer, summon: chosenSummon ?? currentSummon)
+    }
+    
+    @IBAction func turnEndButtonTapped(_ sender: Any) {
+        PlayerController.sharedPlayer.newPlayerTurn(player: currentPlayer)
+        
+        summonAttack(monster: currentMonster, player: currentPlayer)
+        updateMonster(monster: currentMonster)
+        if currentMonster.health > 0 {
+            monsterAttack(monster: currentMonster, player: currentPlayer)
+        }else {
+            victoryUIImage.isHidden = false
+            rewardsSegueButtonTapped.isHidden = false
+        }
+
+    }
+    
+    @IBAction func rewardsButtonTapped(_ sender: Any) {
+        currentPlayer.summonArray = []
+        currentPlayer.currentSummons = 0
+    }
+    
+    
+    func placeSummon(player: Player, summon: Summon) {
+        
+        switch player.currentSummons {
         case 0:
-            let goblin = SummonController.sharedSummon.createSummon(summon: currentSummon)
+            let goblin = SummonController.sharedSummon.createSummon(summon: summon)
             guard let summon = PlayerController.sharedPlayer.createMinion(summon: goblin, player: currentPlayer) else {return}
             updateFirstSummon(summon: summon)
             
             updatePlayer(player: currentPlayer)
         case 1:
-            let goblin = SummonController.sharedSummon.createSummon(summon: currentSummon)
+            let goblin = SummonController.sharedSummon.createSummon(summon: summon)
             guard let summon = PlayerController.sharedPlayer.createMinion(summon: goblin, player: currentPlayer) else {return}
             updateSecondSummon(summon: summon)
             
             updatePlayer(player: currentPlayer)
         case 2:
-            let goblin = SummonController.sharedSummon.createSummon(summon: currentSummon)
+            let goblin = SummonController.sharedSummon.createSummon(summon: summon)
             guard let summon = PlayerController.sharedPlayer.createMinion(summon: goblin, player: currentPlayer) else {return}
             updateThirdSummon(summon: summon)
             
             updatePlayer(player: currentPlayer)
         case 3:
-            let goblin = SummonController.sharedSummon.createSummon(summon: currentSummon)
+            let goblin = SummonController.sharedSummon.createSummon(summon: summon)
             guard let summon = PlayerController.sharedPlayer.createMinion(summon: goblin, player: currentPlayer) else {return}
             updateFourthSummon(summon: summon)
             
             updatePlayer(player: currentPlayer)
         case 4:
-            let goblin = SummonController.sharedSummon.createSummon(summon: currentSummon)
+            let goblin = SummonController.sharedSummon.createSummon(summon: summon)
             guard let summon = PlayerController.sharedPlayer.createMinion(summon: goblin, player: currentPlayer) else {return}
             updateFithSummon(summon: summon)
             
@@ -128,15 +167,6 @@ class battleScreenViewController: UIViewController {
         }
     }
     
-    @IBAction func turnEndButtonTapped(_ sender: Any) {
-        summonAttack(monster: currentMonster, player: currentPlayer)
-        updateMonster(monster: currentMonster)
-        if currentMonster.health > 0 {
-            monsterAttack(monster: currentMonster, player: currentPlayer)
-        }
-        
-        PlayerController.sharedPlayer.newPlayerTurn(player: currentPlayer)
-    }
     
     //MARK: Battle Logic
     
@@ -168,6 +198,33 @@ class battleScreenViewController: UIViewController {
         }
         player.summonArray = newSummonArray
         updateBattleField(player: player)
+    }
+    
+    func presentAlertController() {
+        let alertController = UIAlertController(title: "Choose Desired Minion", message: "Spend mana to put a summon on the battle field", preferredStyle: .alert)
+
+        
+        let summonOne = UIAlertAction(title: "\(currentSummon.name)", style: .default) { (_) in
+            self.chosenSummon = self.currentSummon
+        }
+        let summonTwo = UIAlertAction(title: "\(currentSummonTwo.name)", style: .default) { (_) in
+            self.chosenSummon = self.currentSummonTwo
+        }
+        let summonThree = UIAlertAction(title: "\(currentSummon.name)", style: .default) { (_) in
+            self.chosenSummon = self.currentSummon
+        }
+        let summonFour = UIAlertAction(title: "\(currentSummonTwo.name)", style: .default) { (_) in
+            self.chosenSummon = self.currentSummonTwo
+        }
+
+        
+        alertController.addAction(summonOne)
+        alertController.addAction(summonTwo)
+        alertController.addAction(summonThree)
+        alertController.addAction(summonFour)
+        self.present(alertController, animated: true, completion: nil)
+        
+        return
     }
     
     //MARK: update battlefield functions
@@ -264,16 +321,4 @@ class battleScreenViewController: UIViewController {
         
         summonFiveStackView.isHidden = false
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

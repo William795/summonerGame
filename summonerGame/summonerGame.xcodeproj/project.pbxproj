@@ -26,6 +26,7 @@
 		92071A4E229C4929000A7B75 /* rewardsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A4D229C4929000A7B75 /* rewardsScreenViewController.swift */; };
 		92071A50229C4947000A7B75 /* redeploymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A4F229C4947000A7B75 /* redeploymentViewController.swift */; };
 		92071A52229C495A000A7B75 /* newSumonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A51229C495A000A7B75 /* newSumonViewController.swift */; };
+		92071A56229C9D16000A7B75 /* GlobalTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A55229C9D16000A7B75 /* GlobalTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		92071A4D229C4929000A7B75 /* rewardsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rewardsScreenViewController.swift; sourceTree = "<group>"; };
 		92071A4F229C4947000A7B75 /* redeploymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = redeploymentViewController.swift; sourceTree = "<group>"; };
 		92071A51229C495A000A7B75 /* newSumonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newSumonViewController.swift; sourceTree = "<group>"; };
+		92071A55229C9D16000A7B75 /* GlobalTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				92071A0B229C2ED4000A7B75 /* Main.storyboard */,
 				92071A3C229C3038000A7B75 /* Models */,
 				92071A43229C3075000A7B75 /* Controllers */,
+				92071A5B229C9F8D000A7B75 /* Sprite Animation stuff */,
 			);
 			path = summonerGame;
 			sourceTree = "<group>";
@@ -207,6 +210,14 @@
 				92071A51229C495A000A7B75 /* newSumonViewController.swift */,
 			);
 			path = battleViewControllers;
+			sourceTree = "<group>";
+		};
+		92071A5B229C9F8D000A7B75 /* Sprite Animation stuff */ = {
+			isa = PBXGroup;
+			children = (
+				92071A55229C9D16000A7B75 /* GlobalTimer.swift */,
+			);
+			path = "Sprite Animation stuff";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,6 +365,7 @@
 				92071A08229C2ED4000A7B75 /* AppDelegate.swift in Sources */,
 				92071A3B229C3032000A7B75 /* Summon.swift in Sources */,
 				92071A4C229C491A000A7B75 /* battleScreenViewController.swift in Sources */,
+				92071A56229C9D16000A7B75 /* GlobalTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

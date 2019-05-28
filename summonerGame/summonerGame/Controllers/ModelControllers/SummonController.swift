@@ -14,7 +14,9 @@ class SummonController {
     
 
     
-    let golblin = Summon(health: 4, size: 1, attack: 2, cost: 1, ability: nil, summonImage: UIImage(named: "placeHolder")!)
+    let golblin = Summon(health: 4, size: 1, attack: 2, cost: 1, ability: nil, summonImage: UIImage(named: "placeHolder")!, name: "goblin")
+    
+    let archer = Summon(health: 2, size: 1, attack: 4, cost: 1, ability: nil, summonImage: UIImage(named: "placeHolder")!, name: "archer")
     
     func createSummon(summon: Summon) -> Summon{
         

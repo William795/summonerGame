@@ -15,6 +15,7 @@ struct Summon {
     let cost: Int
     let ability: String?
     let summonImage: UIImage
+    let name: String
     
 }
 //    init(health: Int, size: Int, attack: Int, cost: Int, ability: String?, summonImage: UIImage) {
