@@ -16,6 +16,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //adding starting summons
+        SummonController.sharedSummon.addToAvailablePool(summon: SummonController.sharedSummon.golblin)
+        SummonController.sharedSummon.addToAvailablePool(summon: SummonController.sharedSummon.archer)
+        SummonController.sharedSummon.addToAvailablePool(summon: SummonController.sharedSummon.doggo)
+        SummonController.sharedSummon.addToAvailablePool(summon: SummonController.sharedSummon.slima)
+        SummonController.sharedSummon.addToAvailablePool(summon: SummonController.sharedSummon.slima)
+        SummonController.sharedSummon.addToAvailablePool(summon: SummonController.sharedSummon.slima)
+        SummonController.sharedSummon.addToAvailablePool(summon: SummonController.sharedSummon.slima)
+        SummonController.sharedSummon.addToAvailablePool(summon: SummonController.sharedSummon.slima)
+
+        
         return true
     }
 

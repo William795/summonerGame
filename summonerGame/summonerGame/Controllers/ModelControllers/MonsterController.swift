@@ -16,7 +16,7 @@ class MonsterController {
     
     
     
-    var sillyWarrior = Monster(health: 100, attackSize: 2, attackDamage: 3, monsterImage: UIImage(named: "Monster")!)
+    var sillyWarrior = Monster(health: 10, maxHealth: 10, attackSize: 2, attackDamage: 3, monsterImage: UIImage(named: "Monster")!)
     
     
     func createMonster(){

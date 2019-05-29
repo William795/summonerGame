@@ -71,10 +71,15 @@ class battleScreenViewController: UIViewController {
     var currentMonster = MonsterController.sharedMonster.sillyWarrior
     var currentPlayer = PlayerController.sharedPlayer.currentPlayer
     
+    
     var chosenSummon: Summon?
+    
+    //array landing pad that holds the chosen summons
+    var chosenSummonArray: [Summon]? = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         victoryUIImage.isHidden = true
         rewardsSegueButtonTapped.isHidden = true
@@ -204,17 +209,17 @@ class battleScreenViewController: UIViewController {
         let alertController = UIAlertController(title: "Choose Desired Minion", message: "Spend mana to put a summon on the battle field", preferredStyle: .alert)
 
         
-        let summonOne = UIAlertAction(title: "\(currentSummon.name)", style: .default) { (_) in
-            self.chosenSummon = self.currentSummon
+        let summonOne = UIAlertAction(title: "\(chosenSummonArray?[0].name ?? "")", style: .default) { (_) in
+            self.chosenSummon = self.chosenSummonArray?[0]
         }
-        let summonTwo = UIAlertAction(title: "\(currentSummonTwo.name)", style: .default) { (_) in
-            self.chosenSummon = self.currentSummonTwo
+        let summonTwo = UIAlertAction(title: "\(chosenSummonArray?[1].name ?? "")", style: .default) { (_) in
+            self.chosenSummon = self.chosenSummonArray?[1]
         }
-        let summonThree = UIAlertAction(title: "\(currentSummon.name)", style: .default) { (_) in
-            self.chosenSummon = self.currentSummon
+        let summonThree = UIAlertAction(title: "\(chosenSummonArray?[2].name ?? "")", style: .default) { (_) in
+            self.chosenSummon = self.chosenSummonArray?[2]
         }
-        let summonFour = UIAlertAction(title: "\(currentSummonTwo.name)", style: .default) { (_) in
-            self.chosenSummon = self.currentSummonTwo
+        let summonFour = UIAlertAction(title: "\(chosenSummonArray?[3].name ?? "")", style: .default) { (_) in
+            self.chosenSummon = self.chosenSummonArray?[3]
         }
 
         
@@ -321,4 +326,17 @@ class battleScreenViewController: UIViewController {
         
         summonFiveStackView.isHidden = false
     }
+    
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toRewardsSegue" {
+            guard let summonArray = chosenSummonArray else {return}
+            let destinationVC = segue.destination as? rewardsScreenViewController
+            destinationVC?.summonArray = summonArray
+        }
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
 }

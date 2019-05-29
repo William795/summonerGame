@@ -27,6 +27,9 @@
 		92071A50229C4947000A7B75 /* redeploymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A4F229C4947000A7B75 /* redeploymentViewController.swift */; };
 		92071A52229C495A000A7B75 /* newSumonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A51229C495A000A7B75 /* newSumonViewController.swift */; };
 		92071A56229C9D16000A7B75 /* GlobalTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A55229C9D16000A7B75 /* GlobalTimer.swift */; };
+		92071A63229D93D5000A7B75 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A62229D93D5000A7B75 /* CollectionViewController.swift */; };
+		92071A65229D973E000A7B75 /* rewardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A64229D973E000A7B75 /* rewardsCollectionViewCell.swift */; };
+		921276E3229DF1D7006F6A24 /* summonSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921276E2229DF1D7006F6A24 /* summonSelectionCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		92071A4F229C4947000A7B75 /* redeploymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = redeploymentViewController.swift; sourceTree = "<group>"; };
 		92071A51229C495A000A7B75 /* newSumonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newSumonViewController.swift; sourceTree = "<group>"; };
 		92071A55229C9D16000A7B75 /* GlobalTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTimer.swift; sourceTree = "<group>"; };
+		92071A62229D93D5000A7B75 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		92071A64229D973E000A7B75 /* rewardsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rewardsCollectionViewCell.swift; sourceTree = "<group>"; };
+		921276E2229DF1D7006F6A24 /* summonSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = summonSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,9 +131,11 @@
 			children = (
 				92071A35229C2EE3000A7B75 /* Resources */,
 				92071A0B229C2ED4000A7B75 /* Main.storyboard */,
-				92071A3C229C3038000A7B75 /* Models */,
+				92071A61229D8DC4000A7B75 /* Views */,
 				92071A43229C3075000A7B75 /* Controllers */,
-				92071A5B229C9F8D000A7B75 /* Sprite Animation stuff */,
+				92071A3C229C3038000A7B75 /* Models */,
+				92071A5B229C9F8D000A7B75 /* SpritesAnimation */,
+				92071A62229D93D5000A7B75 /* CollectionViewController.swift */,
 			);
 			path = summonerGame;
 			sourceTree = "<group>";
@@ -212,12 +220,21 @@
 			path = battleViewControllers;
 			sourceTree = "<group>";
 		};
-		92071A5B229C9F8D000A7B75 /* Sprite Animation stuff */ = {
+		92071A5B229C9F8D000A7B75 /* SpritesAnimation */ = {
 			isa = PBXGroup;
 			children = (
 				92071A55229C9D16000A7B75 /* GlobalTimer.swift */,
 			);
-			path = "Sprite Animation stuff";
+			path = SpritesAnimation;
+			sourceTree = "<group>";
+		};
+		92071A61229D8DC4000A7B75 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				92071A64229D973E000A7B75 /* rewardsCollectionViewCell.swift */,
+				921276E2229DF1D7006F6A24 /* summonSelectionCollectionViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,10 +377,13 @@
 				92071A4E229C4929000A7B75 /* rewardsScreenViewController.swift in Sources */,
 				92071A50229C4947000A7B75 /* redeploymentViewController.swift in Sources */,
 				92071A42229C3070000A7B75 /* SummonController.swift in Sources */,
+				92071A63229D93D5000A7B75 /* CollectionViewController.swift in Sources */,
 				92071A37229C3021000A7B75 /* Player.swift in Sources */,
 				92071A48229C48E4000A7B75 /* monsterSelectViewController.swift in Sources */,
+				921276E3229DF1D7006F6A24 /* summonSelectionCollectionViewCell.swift in Sources */,
 				92071A08229C2ED4000A7B75 /* AppDelegate.swift in Sources */,
 				92071A3B229C3032000A7B75 /* Summon.swift in Sources */,
+				92071A65229D973E000A7B75 /* rewardsCollectionViewCell.swift in Sources */,
 				92071A4C229C491A000A7B75 /* battleScreenViewController.swift in Sources */,
 				92071A56229C9D16000A7B75 /* GlobalTimer.swift in Sources */,
 			);

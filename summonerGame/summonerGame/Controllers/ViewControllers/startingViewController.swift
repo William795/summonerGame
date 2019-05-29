@@ -19,6 +19,7 @@ class startingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        timerStart()
         
         torchOneImageView.image = UIImage(named: "Torch1")
         torchTwoImageView.image = UIImage(named: "Torch1")
@@ -36,7 +37,18 @@ class startingViewController: UIViewController {
         torchImagePhase += 1
     }
     
-
+    var timer: Timer?
+    
+    func timerStart() {
+        
+        DispatchQueue.main.async {
+            self.timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (_) in
+                self.torchPhase()
+            })
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 
