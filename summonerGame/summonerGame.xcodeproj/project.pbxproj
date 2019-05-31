@@ -30,6 +30,10 @@
 		92071A63229D93D5000A7B75 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A62229D93D5000A7B75 /* CollectionViewController.swift */; };
 		92071A65229D973E000A7B75 /* rewardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A64229D973E000A7B75 /* rewardsCollectionViewCell.swift */; };
 		921276E3229DF1D7006F6A24 /* summonSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921276E2229DF1D7006F6A24 /* summonSelectionCollectionViewCell.swift */; };
+		9227B026229EE81F006F2BDF /* monsterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9227B025229EE81F006F2BDF /* monsterTableViewCell.swift */; };
+		9227B028229EFB0C006F2BDF /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9227B027229EFB0C006F2BDF /* TableViewController.swift */; };
+		9227B02A229F2EDE006F2BDF /* MonsterMoveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9227B029229F2EDE006F2BDF /* MonsterMoveController.swift */; };
+		9227B02C22A03E34006F2BDF /* SummonAbilityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9227B02B22A03E34006F2BDF /* SummonAbilityController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +83,10 @@
 		92071A62229D93D5000A7B75 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		92071A64229D973E000A7B75 /* rewardsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rewardsCollectionViewCell.swift; sourceTree = "<group>"; };
 		921276E2229DF1D7006F6A24 /* summonSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = summonSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
+		9227B025229EE81F006F2BDF /* monsterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = monsterTableViewCell.swift; sourceTree = "<group>"; };
+		9227B027229EFB0C006F2BDF /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		9227B029229F2EDE006F2BDF /* MonsterMoveController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterMoveController.swift; sourceTree = "<group>"; };
+		9227B02B22A03E34006F2BDF /* SummonAbilityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonAbilityController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +144,7 @@
 				92071A3C229C3038000A7B75 /* Models */,
 				92071A5B229C9F8D000A7B75 /* SpritesAnimation */,
 				92071A62229D93D5000A7B75 /* CollectionViewController.swift */,
+				9227B027229EFB0C006F2BDF /* TableViewController.swift */,
 			);
 			path = summonerGame;
 			sourceTree = "<group>";
@@ -193,7 +202,9 @@
 			children = (
 				92071A3D229C3051000A7B75 /* PlayerController.swift */,
 				92071A3F229C3061000A7B75 /* MonsterController.swift */,
+				9227B029229F2EDE006F2BDF /* MonsterMoveController.swift */,
 				92071A41229C3070000A7B75 /* SummonController.swift */,
+				9227B02B22A03E34006F2BDF /* SummonAbilityController.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -233,6 +244,7 @@
 			children = (
 				92071A64229D973E000A7B75 /* rewardsCollectionViewCell.swift */,
 				921276E2229DF1D7006F6A24 /* summonSelectionCollectionViewCell.swift */,
+				9227B025229EE81F006F2BDF /* monsterTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -369,11 +381,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				92071A39229C302B000A7B75 /* Monster.swift in Sources */,
+				9227B026229EE81F006F2BDF /* monsterTableViewCell.swift in Sources */,
 				92071A40229C3061000A7B75 /* MonsterController.swift in Sources */,
+				9227B028229EFB0C006F2BDF /* TableViewController.swift in Sources */,
 				92071A52229C495A000A7B75 /* newSumonViewController.swift in Sources */,
 				92071A4A229C48FB000A7B75 /* summonSelectViewController.swift in Sources */,
 				92071A46229C48C7000A7B75 /* startingViewController.swift in Sources */,
 				92071A3E229C3051000A7B75 /* PlayerController.swift in Sources */,
+				9227B02A229F2EDE006F2BDF /* MonsterMoveController.swift in Sources */,
 				92071A4E229C4929000A7B75 /* rewardsScreenViewController.swift in Sources */,
 				92071A50229C4947000A7B75 /* redeploymentViewController.swift in Sources */,
 				92071A42229C3070000A7B75 /* SummonController.swift in Sources */,
@@ -386,6 +401,7 @@
 				92071A65229D973E000A7B75 /* rewardsCollectionViewCell.swift in Sources */,
 				92071A4C229C491A000A7B75 /* battleScreenViewController.swift in Sources */,
 				92071A56229C9D16000A7B75 /* GlobalTimer.swift in Sources */,
+				9227B02C22A03E34006F2BDF /* SummonAbilityController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

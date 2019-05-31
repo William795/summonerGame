@@ -14,14 +14,31 @@ class Monster {
     var attackSize: Int
     var attackDamage: Int
     let monsterImage: UIImage
-    let defeted: Bool
+    var defeted: Bool
+    let name: String
+    let title: String
+    let flavorText: String
+    let battleText: String
+    let difficulty: Int
+    let difficultyImage: UIImage
     
-    init(health: Int, maxHealth: Int, attackSize: Int, attackDamage: Int, monsterImage: UIImage, defeted: Bool = false) {
+    let moveSetNumber: Int
+    var moveNumber: Int
+    
+    init(health: Int, maxHealth: Int, attackSize: Int, attackDamage: Int, monsterImage: UIImage, defeted: Bool = false, name: String, title: String,flavorText: String, battleText: String, difficulty: Int, difficultyImage: UIImage, moveSetNumber: Int, moveNumber: Int) {
         self.health = health
         self.maxHealth = maxHealth
         self.attackSize = attackSize
         self.attackDamage = attackDamage
         self.monsterImage = monsterImage
         self.defeted = defeted
+        self.name = name
+        self.title = title
+        self.flavorText = flavorText
+        self.battleText = battleText
+        self.difficulty = difficulty
+        self.difficultyImage = difficultyImage
+        self.moveSetNumber = moveSetNumber
+        self.moveNumber = moveNumber
     }
 }

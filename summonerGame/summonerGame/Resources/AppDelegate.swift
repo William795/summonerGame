@@ -22,10 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SummonController.sharedSummon.addToAvailablePool(summon: SummonController.sharedSummon.archer)
         SummonController.sharedSummon.addToAvailablePool(summon: SummonController.sharedSummon.doggo)
         SummonController.sharedSummon.addToAvailablePool(summon: SummonController.sharedSummon.slima)
-        SummonController.sharedSummon.addToAvailablePool(summon: SummonController.sharedSummon.slima)
-        SummonController.sharedSummon.addToAvailablePool(summon: SummonController.sharedSummon.slima)
-        SummonController.sharedSummon.addToAvailablePool(summon: SummonController.sharedSummon.slima)
-        SummonController.sharedSummon.addToAvailablePool(summon: SummonController.sharedSummon.slima)
+
+        MonsterController.sharedMonster.addToMonsterPool(monster: MonsterController.sharedMonster.sillyWarrior)
+        MonsterController.sharedMonster.addToMonsterPool(monster: MonsterController.sharedMonster.ArcherCaptain)
+        MonsterController.sharedMonster.addToMonsterPool(monster: MonsterController.sharedMonster.crusadingPalidin)
+        MonsterController.sharedMonster.addToMonsterPool(monster: MonsterController.sharedMonster.regalMage)
+        MonsterController.sharedMonster.addToMonsterPool(monster: MonsterController.sharedMonster.drunkenBrawler)
+        
 
         
         return true

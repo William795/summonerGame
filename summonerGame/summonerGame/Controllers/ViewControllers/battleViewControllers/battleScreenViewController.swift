@@ -10,6 +10,10 @@ import UIKit
 
 class battleScreenViewController: UIViewController {
 
+    //MARK: outlets
+    @IBOutlet weak var defeatImageView: UIImageView!
+    @IBOutlet weak var defeatSegueButtonTapped: UIButton!
+    
     @IBOutlet weak var rewardsSegueButtonTapped: UIButton!
     @IBOutlet weak var victoryUIImage: UIImageView!
     //monster UI
@@ -26,6 +30,10 @@ class battleScreenViewController: UIViewController {
     @IBOutlet weak var playerManaLabel: UILabel!
     @IBOutlet weak var playerSummonLabel: UILabel!
     
+    @IBOutlet weak var playerAbilityOne: UIImageView!
+    @IBOutlet weak var playerAbilityTwo: UIImageView!
+    @IBOutlet weak var playerAbilityThree: UIImageView!
+    @IBOutlet weak var playerAbilityFour: UIImageView!
     
     //summon UI
     //summon 1
@@ -65,10 +73,8 @@ class battleScreenViewController: UIViewController {
     @IBOutlet weak var summonFourStackView: UIStackView!
     @IBOutlet weak var summonFiveStackView: UIStackView!
 
-    //MARK: current instances of what i'm working with
-    var currentSummon = SummonController.sharedSummon.golblin
-    var currentSummonTwo = SummonController.sharedSummon.archer
-    var currentMonster = MonsterController.sharedMonster.sillyWarrior
+    //MARK: calling the player, summons, and monster
+    var currentMonster = MonsterController.sharedMonster.currentMonster
     var currentPlayer = PlayerController.sharedPlayer.currentPlayer
     
     
@@ -80,18 +86,24 @@ class battleScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        defeatImageView.isHidden = true
+        defeatSegueButtonTapped.isHidden = true
         victoryUIImage.isHidden = true
         rewardsSegueButtonTapped.isHidden = true
         
         //setting up player
         currentPlayer.currentHealth = currentPlayer.maxHealth
         currentPlayer.currentMana = currentPlayer.maxMana
-        
         updatePlayer(player: currentPlayer)
         
+        playerAbilityOne.image = chosenSummonArray?[0].abilityImage
+        playerAbilityTwo.image = chosenSummonArray?[1].abilityImage
+        playerAbilityThree.image = chosenSummonArray?[2].abilityImage
+        playerAbilityFour.image = chosenSummonArray?[3].abilityImage
+        
         //setting up monster
-        updateMonster(monster: currentMonster)
+        currentMonster?.health = currentMonster!.maxHealth
+        updateMonster(monster: currentMonster!)
         
         //hiding stack views
         summonOneStackView.isHidden = true
@@ -103,29 +115,83 @@ class battleScreenViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    //MARK: button functions
     @IBAction func summonChooserButtonTapped(_ sender: Any) {
         
         presentAlertController()
     }
     
     @IBAction func summonButtonTapped(_ sender: Any) {
-        
-        placeSummon(player: currentPlayer, summon: chosenSummon ?? currentSummon)
+        guard let summon = chosenSummon else {return}
+        placeSummon(player: currentPlayer, summon: summon)
     }
     
-    @IBAction func turnEndButtonTapped(_ sender: Any) {
-        PlayerController.sharedPlayer.newPlayerTurn(player: currentPlayer)
+    //MARK: Ability Buttons Tapped
+    
+    
+    @IBAction func abilityOneTapped(_ sender: Any) {
+        guard let summonAbility = chosenSummonArray?[0] else {return}
+        summonAbilityCheck(summonAbility)
+    }
+    @IBAction func abilityTwoTapped(_ sender: Any) {
+        guard let summonAbility = chosenSummonArray?[1] else {return}
+        summonAbilityCheck(summonAbility)
+    }
+    @IBAction func abilityThreeTapped(_ sender: Any) {
+        guard let summonAbility = chosenSummonArray?[2] else {return}
+        summonAbilityCheck(summonAbility)
+    }
+    @IBAction func abilityFourTapped(_ sender: Any) {
+        guard let summonAbility = chosenSummonArray?[3] else {return}
+        summonAbilityCheck(summonAbility)
+    }
+    
+    func summonAbilityCheck(_ summonAbility: Summon) {
+        var didGoOff = 0
+        var chosenSumonArrayCoolDown: [Summon] = []
         
-        summonAttack(monster: currentMonster, player: currentPlayer)
-        updateMonster(monster: currentMonster)
-        if currentMonster.health > 0 {
-            monsterAttack(monster: currentMonster, player: currentPlayer)
-        }else {
-            victoryUIImage.isHidden = false
-            rewardsSegueButtonTapped.isHidden = false
+        if summonAbility.abilityActive == false || summonAbility.abilityCoolDownRemaining > 0 || currentPlayer.currentMana < summonAbility.abilityCost {
+            return
+            //add error text block
         }
-
+        for summon in currentPlayer.summonArray {
+            if summon.abilityNumber == summonAbility.abilityNumber {
+                SummonAbilityController.sharedAbility.useAbility(summon: summon, player: currentPlayer, monster: currentMonster!)
+                didGoOff += 1
+            }
+        }
+        if didGoOff < 1 {
+            currentPlayer.currentMana += summonAbility.abilityCost
+        }else {
+            currentPlayer.currentMana -= summonAbility.abilityCost
+            for summon in chosenSummonArray! {
+                var setSummonAbilityCoolDown = summon
+                if setSummonAbilityCoolDown.abilityNumber == summonAbility.abilityNumber {
+                    setSummonAbilityCoolDown.abilityCoolDownRemaining = summonAbility.abilityCoolDown
+                }
+                chosenSumonArrayCoolDown.append(setSummonAbilityCoolDown)
+            }
+        }
+        chosenSummonArray = chosenSumonArrayCoolDown
+        updateBattleField(player: currentPlayer, monster: currentMonster!)
+    }
+    
+    //MARK: Battle logic
+    
+    @IBAction func turnEndButtonTapped(_ sender: Any) {
+        if currentMonster!.health < 1 || currentPlayer.currentHealth < 1 {
+            return
+        }
+        
+        PlayerController.sharedPlayer.newPlayerTurn(player: currentPlayer)
+        abilityCoolDownTick()
+        
+        summonAttack(monster: currentMonster!, player: currentPlayer)
+        updateMonster(monster: currentMonster!)
+        if currentMonster!.health > 0 {
+            monsterAttack(monster: currentMonster!, player: currentPlayer)
+            MonsterMoveController.sharedMove.sillyWarriorMoves()
+            updateMonster(monster: currentMonster!)
+        }
     }
     
     @IBAction func rewardsButtonTapped(_ sender: Any) {
@@ -133,25 +199,26 @@ class battleScreenViewController: UIViewController {
         currentPlayer.currentSummons = 0
     }
     
+    //MARK: button functions
     
     func placeSummon(player: Player, summon: Summon) {
         
         switch player.currentSummons {
         case 0:
-            let goblin = SummonController.sharedSummon.createSummon(summon: summon)
-            guard let summon = PlayerController.sharedPlayer.createMinion(summon: goblin, player: currentPlayer) else {return}
+            let summonOne = SummonController.sharedSummon.createSummon(summon: summon)
+            guard let summon = PlayerController.sharedPlayer.createMinion(summon: summonOne, player: currentPlayer) else {return}
             updateFirstSummon(summon: summon)
             
             updatePlayer(player: currentPlayer)
         case 1:
-            let goblin = SummonController.sharedSummon.createSummon(summon: summon)
-            guard let summon = PlayerController.sharedPlayer.createMinion(summon: goblin, player: currentPlayer) else {return}
+            let summonTwo = SummonController.sharedSummon.createSummon(summon: summon)
+            guard let summon = PlayerController.sharedPlayer.createMinion(summon: summonTwo, player: currentPlayer) else {return}
             updateSecondSummon(summon: summon)
             
             updatePlayer(player: currentPlayer)
         case 2:
-            let goblin = SummonController.sharedSummon.createSummon(summon: summon)
-            guard let summon = PlayerController.sharedPlayer.createMinion(summon: goblin, player: currentPlayer) else {return}
+            let summonThree = SummonController.sharedSummon.createSummon(summon: summon)
+            guard let summon = PlayerController.sharedPlayer.createMinion(summon: summonThree, player: currentPlayer) else {return}
             updateThirdSummon(summon: summon)
             
             updatePlayer(player: currentPlayer)
@@ -202,7 +269,7 @@ class battleScreenViewController: UIViewController {
             player.currentHealth -= monster.attackDamage
         }
         player.summonArray = newSummonArray
-        updateBattleField(player: player)
+        updateBattleField(player: player, monster: monster)
     }
     
     func presentAlertController() {
@@ -234,10 +301,16 @@ class battleScreenViewController: UIViewController {
     
     //MARK: update battlefield functions
     
-    func updateBattleField(player: Player) {
+    
+    func updateBattleField(player: Player, monster: Monster) {
         
         updatePlayer(player: player)
+        updateMonster(monster: monster)
         
+        updateSummonPosition(player)
+    }
+    
+    func updateSummonPosition(_ player: Player) {
         summonOneStackView.isHidden = true
         summonTwoStackView.isHidden = true
         summonThreeStackView.isHidden = true
@@ -268,13 +341,15 @@ class battleScreenViewController: UIViewController {
         playerHealthLabel.text = "\(currentPlayer.currentHealth)"
         playerManaLabel.text = "\(currentPlayer.currentMana)"
         playerSummonLabel.text = "\(currentPlayer.currentSummons)"
+        currentPlayer.currentHealth < 1 ? defeatDisplay() : nil
     }
     
     func updateMonster(monster: Monster) {
-        monsterImageView.image = currentMonster.monsterImage
-        monsterSizeLabel.text = "\(currentMonster.attackSize)"
-        monsterDamageLabel.text = "\(currentMonster.attackDamage)"
-        monsterHealthLabel.text = "\(currentMonster.health)"
+        monsterImageView.image = currentMonster?.monsterImage
+        monsterSizeLabel.text = "\(currentMonster?.attackSize ?? 0)"
+        monsterDamageLabel.text = "\(currentMonster?.attackDamage ?? 0)"
+        monsterHealthLabel.text = "\(currentMonster?.health ?? 0)"
+        monster.health < 1 ? victoryDisplay() : nil
     }
     
     func updateSummons(summon: Summon) {
@@ -325,6 +400,29 @@ class battleScreenViewController: UIViewController {
         fithSummonImageView.image = summon.summonImage
         
         summonFiveStackView.isHidden = false
+    }
+    //MARK: displays/abilitycooldowntick
+    
+    func victoryDisplay() {
+        victoryUIImage.isHidden = false
+        rewardsSegueButtonTapped.isHidden = false
+    }
+    
+    func defeatDisplay() {
+        defeatSegueButtonTapped.isHidden = false
+        defeatImageView.isHidden = false
+    }
+    
+    func abilityCoolDownTick() {
+        var summonArrayTick: [Summon] = []
+        for summon in  chosenSummonArray! {
+            var coolDownChange = summon
+            if coolDownChange.abilityCoolDownRemaining > 0 {
+                coolDownChange.abilityCoolDownRemaining -= 1
+            }
+            summonArrayTick.append(coolDownChange)
+        }
+        chosenSummonArray = summonArrayTick
     }
     
      // MARK: - Navigation

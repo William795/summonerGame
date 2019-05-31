@@ -49,13 +49,13 @@ class SummonController {
     }
     
     var upgradedSummonsArray: [Summon]{
-        let goblinPlus = Summon(health: 5, maxHealth: 7, size: 1, attack: 3, cost: 1, abilityActive: true, ability: "Buff attack of all summons", summonImage: UIImage(named: "Goblin")!, name: "Goblin")
+        let goblinPlus = Summon(health: 5, maxHealth: 7, size: 1, attack: 3, cost: 1, summonImage: UIImage(named: "Goblin")!, name: "Goblin", ability: "Buff attack of all summons", abilityActive: true, abilityCost: 1, abilityCoolDown: 0, abilityImage: UIImage(named: "Goblin")!, abilityNumber: 1, abilityLevel: 1, abilityCoolDownRemaining: 0)
         
-        let archerPlus = Summon(health: 3, maxHealth: 4, size: 1, attack: 6, cost: 1, abilityActive: true, ability: "Snipe Monster", summonImage: UIImage(named: "Archer")!, name: "Archer")
+        let archerPlus = Summon(health: 3, maxHealth: 4, size: 1, attack: 6, cost: 1, summonImage: UIImage(named: "Archer")!, name: "Archer", ability: "deals damage", abilityActive: true, abilityCost: 1, abilityCoolDown: 0, abilityImage: UIImage(named: "Archer")!, abilityNumber: 2, abilityLevel: 1, abilityCoolDownRemaining: 0)
         
-        let doggoPlus = Summon(health: 8, maxHealth: 10, size: 3, attack: 4, cost: 3, abilityActive: true, ability: "decrease monster attack damage", summonImage: UIImage(named: "Dog")!, name: "Doggo")
+        let doggoPlus = Summon(health: 8, maxHealth: 10, size: 3, attack: 4, cost: 2, summonImage: UIImage(named: "Dog")!, name: "Doggo", ability: "Decrease Monster damage", abilityActive: true, abilityCost: 1, abilityCoolDown: 0, abilityImage: UIImage(named: "Dog")!, abilityNumber: 3, abilityLevel: 1, abilityCoolDownRemaining: 0)
         
-        let slimaPlus = Summon(health: 7, maxHealth: 10, size: 2, attack: 1, cost: 1, abilityActive: true, ability: "decrease monster attack size", summonImage: UIImage(named: "Slime")!, name: "Slime")
+        let slimaPlus = Summon(health: 7, maxHealth: 10, size: 2, attack: 1, cost: 1, summonImage: UIImage(named: "Slime")!, name: "Slime", ability: "decrease Monster attack size", abilityActive: true, abilityCost: 2, abilityCoolDown: 1, abilityImage: UIImage(named: "Slime")!, abilityNumber: 4, abilityLevel: 1, abilityCoolDownRemaining: 0)
         
         return [goblinPlus, archerPlus, doggoPlus, slimaPlus]
     }
@@ -63,17 +63,12 @@ class SummonController {
     
     //MARK: all summons
 
-    var golblin = Summon(health: 4, maxHealth: 5, size: 1, attack: 2, cost: 1, abilityActive: false, ability: "Buff attack of all summons", summonImage: UIImage(named: "Goblin")!, name: "Goblin")
+    var golblin = Summon(health: 4, maxHealth: 5, size: 1, attack: 2, cost: 1, summonImage: UIImage(named: "Goblin")!, name: "Goblin", ability: "Buff attack of all summons", abilityActive: false, abilityCost: 1, abilityCoolDown: 0, abilityImage: UIImage(named: "Goblin")!, abilityNumber: 1, abilityLevel: 1, abilityCoolDownRemaining: 0)
 
-    var archer = Summon(health: 2, maxHealth: 3, size: 1, attack: 4, cost: 1, abilityActive: false, ability: "Snipe Monster", summonImage: UIImage(named: "Archer")!, name: "Archer")
+    var archer = Summon(health: 2, maxHealth: 3, size: 1, attack: 4, cost: 1, summonImage: UIImage(named: "Archer")!, name: "Archer", ability: "Snipe", abilityActive: false, abilityCost: 1, abilityCoolDown: 0, abilityImage: UIImage(named: "Archer")!, abilityNumber: 2, abilityLevel: 1, abilityCoolDownRemaining: 0)
     
-    var doggo = Summon(health: 6, maxHealth: 6, size: 2, attack: 2, cost: 2, abilityActive: false, ability: "decrease monster attack damage", summonImage: UIImage(named: "Dog")!, name: "Doggo")
+    var doggo = Summon(health: 6, maxHealth: 7, size: 2, attack: 2, cost: 2, summonImage: UIImage(named: "Dog")!, name: "Doggo", ability: "decrease monster damage", abilityActive: false, abilityCost: 1, abilityCoolDown: 1, abilityImage: UIImage(named: "Dog")!, abilityNumber: 3, abilityLevel: 1, abilityCoolDownRemaining: 0)
  
-    var slima = Summon(health: 5, maxHealth: 8, size: 1, attack: 1, cost: 1, abilityActive: false, ability: "decrease monster attack size", summonImage: UIImage(named: "Slime")!, name: "Slime")
+    var slima = Summon(health: 5, maxHealth: 8, size: 1, attack: 1, cost: 1, summonImage: UIImage(named: "Slime")!, name: "Slime", ability: "decrease monster attack szie", abilityActive: false, abilityCost: 1, abilityCoolDown: 1, abilityImage: UIImage(named: "Slime")!, abilityNumber: 4, abilityLevel: 1, abilityCoolDownRemaining: 0)
 }
 
-
-extension SummonController {
-    
-
-}

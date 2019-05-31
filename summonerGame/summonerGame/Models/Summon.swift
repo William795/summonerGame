@@ -11,13 +11,20 @@ import UIKit
 struct Summon {
     var health: Int
     let maxHealth: Int
-    let size: Int
+    var size: Int
     var attack: Int
     let cost: Int
-    var abilityActive: Bool = false
-    let ability: String? 
     let summonImage: UIImage
     let name: String
+    
+    let ability: String?
+    var abilityActive: Bool = false
+    let abilityCost: Int
+    let abilityCoolDown: Int
+    let abilityImage: UIImage
+    let abilityNumber: Int
+    var abilityLevel: Int
+    var abilityCoolDownRemaining: Int
     
 }
 //    init(health: Int, size: Int, attack: Int, cost: Int, ability: String?, summonImage: UIImage) {

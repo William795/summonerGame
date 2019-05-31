@@ -17,6 +17,7 @@ class rewardsScreenViewController: UIViewController {
 
     @IBOutlet weak var rewardsCollectionView: UICollectionView!
     @IBOutlet weak var continueOnButton: UIButton!
+    @IBOutlet weak var upgradeInstructionsLabel: UILabel!
     
     //keeping track of selected cell
     var selectedUpgrade: IndexPath? {
@@ -43,8 +44,17 @@ class rewardsScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        canUpgrade = true
-        continueOnButton.isHidden = true
+        if MonsterController.sharedMonster.currentMonster?.defeted == false {
+            canUpgrade = true
+            continueOnButton.isHidden = true
+            upgradeInstructionsLabel.text = "Select Desired Upgrade"
+            MonsterController.sharedMonster.currentMonster?.defeted = true
+        }else {
+            canUpgrade = false
+            upgradeInstructionsLabel.text = "Upgrade Already Aquired"
+            continueOnButton.isHidden = false
+        }
+        
        //self.rewardsCollectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
@@ -56,6 +66,7 @@ class rewardsScreenViewController: UIViewController {
             PlayerController.sharedPlayer.currentPlayer.maxMana += 1
             continueOnButton.isHidden = false
             canUpgrade = false
+            upgradeInstructionsLabel.text = "Upgrade Already Aquired"
         }
     }
     
@@ -64,6 +75,7 @@ class rewardsScreenViewController: UIViewController {
             PlayerController.sharedPlayer.currentPlayer.maxHealth += 10
             continueOnButton.isHidden = false
             canUpgrade = false
+            upgradeInstructionsLabel.text = "Upgrade Already Aquired"
         }
     }
     
@@ -107,6 +119,7 @@ extension rewardsScreenViewController: UICollectionViewDataSource, UICollectionV
                 SummonController.sharedSummon.UpgradeSummon(summon: summon!)
                 canUpgrade = false
                 continueOnButton.isHidden = false
+                upgradeInstructionsLabel.text = "Upgrade Already Aquired"
             }
         }
         return false
