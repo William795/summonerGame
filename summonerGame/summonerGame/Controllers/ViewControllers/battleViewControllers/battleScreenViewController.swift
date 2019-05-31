@@ -9,7 +9,7 @@
 import UIKit
 
 class battleScreenViewController: UIViewController {
-
+    
     //MARK: outlets
     @IBOutlet weak var defeatImageView: UIImageView!
     @IBOutlet weak var defeatSegueButtonTapped: UIButton!
@@ -22,6 +22,8 @@ class battleScreenViewController: UIViewController {
     @IBOutlet weak var monsterHealthLabel: UILabel!
     @IBOutlet weak var monsterDamageLabel: UILabel!
     @IBOutlet weak var monsterSizeLabel: UILabel!
+    @IBOutlet weak var monsterTextImageView: UIImageView!
+    @IBOutlet weak var monsterBattleTextLabel: UILabel!
     
     
     //player UI
@@ -34,6 +36,11 @@ class battleScreenViewController: UIViewController {
     @IBOutlet weak var playerAbilityTwo: UIImageView!
     @IBOutlet weak var playerAbilityThree: UIImageView!
     @IBOutlet weak var playerAbilityFour: UIImageView!
+    
+    @IBOutlet weak var abilityCoolDownLabelOne: UILabel!
+    @IBOutlet weak var abilityCoolDownLabelTwo: UILabel!
+    @IBOutlet weak var abilityCooldownLabelThree: UILabel!
+    @IBOutlet weak var abilityCoolDownLabelFour: UILabel!
     
     //summon UI
     //summon 1
@@ -72,7 +79,7 @@ class battleScreenViewController: UIViewController {
     @IBOutlet weak var summonThreeStackView: UIStackView!
     @IBOutlet weak var summonFourStackView: UIStackView!
     @IBOutlet weak var summonFiveStackView: UIStackView!
-
+    
     //MARK: calling the player, summons, and monster
     var currentMonster = MonsterController.sharedMonster.currentMonster
     var currentPlayer = PlayerController.sharedPlayer.currentPlayer
@@ -101,8 +108,19 @@ class battleScreenViewController: UIViewController {
         playerAbilityThree.image = chosenSummonArray?[2].abilityImage
         playerAbilityFour.image = chosenSummonArray?[3].abilityImage
         
+        
+        abilityCoolDownLabelOne.isHidden = true
+        abilityCoolDownLabelTwo.isHidden = true
+        abilityCooldownLabelThree.isHidden = true
+        abilityCoolDownLabelFour.isHidden = true
+        
         //setting up monster
+        monsterTextImageView.isHidden = true
+        monsterBattleTextLabel.isHidden = true
         currentMonster?.health = currentMonster!.maxHealth
+        currentMonster?.moveNumber = 1
+        MonsterMoveController.sharedMove.moveSelector(monster: currentMonster!)
+        MonsterMoveController.sharedMove.resetBossVariables()
         updateMonster(monster: currentMonster!)
         
         //hiding stack views
@@ -130,27 +148,54 @@ class battleScreenViewController: UIViewController {
     
     @IBAction func abilityOneTapped(_ sender: Any) {
         guard let summonAbility = chosenSummonArray?[0] else {return}
-        summonAbilityCheck(summonAbility)
+        let coolDownCheck = summonAbilityCheck(summonAbility)
+        if coolDownCheck > 0 {
+            if summonAbility.abilityCoolDown > 0 {
+                abilityCoolDownLabelOne.isHidden = false
+                abilityCoolDownLabelOne.text = "\(summonAbility.abilityCoolDown)"
+            }
+        }
+        
     }
     @IBAction func abilityTwoTapped(_ sender: Any) {
         guard let summonAbility = chosenSummonArray?[1] else {return}
-        summonAbilityCheck(summonAbility)
+        let coolDownCheck = summonAbilityCheck(summonAbility)
+        if coolDownCheck > 0 {
+            if summonAbility.abilityCoolDown > 0 {
+                abilityCoolDownLabelTwo.isHidden = false
+                abilityCoolDownLabelTwo.text = "\(summonAbility.abilityCoolDown)"
+            }
+        }
+        
     }
     @IBAction func abilityThreeTapped(_ sender: Any) {
         guard let summonAbility = chosenSummonArray?[2] else {return}
-        summonAbilityCheck(summonAbility)
+        let coolDownCheck = summonAbilityCheck(summonAbility)
+        if coolDownCheck > 0 {
+            if summonAbility.abilityCoolDown > 0 {
+                abilityCooldownLabelThree.isHidden = false
+                abilityCooldownLabelThree.text = "\(summonAbility.abilityCoolDown)"
+            }
+        }
+        
     }
     @IBAction func abilityFourTapped(_ sender: Any) {
         guard let summonAbility = chosenSummonArray?[3] else {return}
-        summonAbilityCheck(summonAbility)
+        let coolDownCheck = summonAbilityCheck(summonAbility)
+        if coolDownCheck > 0 {
+            if summonAbility.abilityCoolDown > 0 {
+                abilityCoolDownLabelFour.isHidden = false
+                abilityCoolDownLabelFour.text = "\(summonAbility.abilityCoolDown)"
+            }
+        }
     }
     
-    func summonAbilityCheck(_ summonAbility: Summon) {
+    func summonAbilityCheck(_ summonAbility: Summon) -> Int {
         var didGoOff = 0
         var chosenSumonArrayCoolDown: [Summon] = []
         
         if summonAbility.abilityActive == false || summonAbility.abilityCoolDownRemaining > 0 || currentPlayer.currentMana < summonAbility.abilityCost {
-            return
+            return 0
             //add error text block
         }
         for summon in currentPlayer.summonArray {
@@ -160,7 +205,7 @@ class battleScreenViewController: UIViewController {
             }
         }
         if didGoOff < 1 {
-            currentPlayer.currentMana += summonAbility.abilityCost
+            return 0
         }else {
             currentPlayer.currentMana -= summonAbility.abilityCost
             for summon in chosenSummonArray! {
@@ -173,6 +218,7 @@ class battleScreenViewController: UIViewController {
         }
         chosenSummonArray = chosenSumonArrayCoolDown
         updateBattleField(player: currentPlayer, monster: currentMonster!)
+        return didGoOff
     }
     
     //MARK: Battle logic
@@ -189,7 +235,7 @@ class battleScreenViewController: UIViewController {
         updateMonster(monster: currentMonster!)
         if currentMonster!.health > 0 {
             monsterAttack(monster: currentMonster!, player: currentPlayer)
-            MonsterMoveController.sharedMove.sillyWarriorMoves()
+            MonsterMoveController.sharedMove.moveSelector(monster: currentMonster!)
             updateMonster(monster: currentMonster!)
         }
     }
@@ -274,7 +320,7 @@ class battleScreenViewController: UIViewController {
     
     func presentAlertController() {
         let alertController = UIAlertController(title: "Choose Desired Minion", message: "Spend mana to put a summon on the battle field", preferredStyle: .alert)
-
+        
         
         let summonOne = UIAlertAction(title: "\(chosenSummonArray?[0].name ?? "")", style: .default) { (_) in
             self.chosenSummon = self.chosenSummonArray?[0]
@@ -288,7 +334,7 @@ class battleScreenViewController: UIViewController {
         let summonFour = UIAlertAction(title: "\(chosenSummonArray?[3].name ?? "")", style: .default) { (_) in
             self.chosenSummon = self.chosenSummonArray?[3]
         }
-
+        
         
         alertController.addAction(summonOne)
         alertController.addAction(summonTwo)
@@ -350,13 +396,24 @@ class battleScreenViewController: UIViewController {
         monsterDamageLabel.text = "\(currentMonster?.attackDamage ?? 0)"
         monsterHealthLabel.text = "\(currentMonster?.health ?? 0)"
         monster.health < 1 ? victoryDisplay() : nil
+        
+        if monster.battleText.count > 3 {
+            monsterBattleTextLabel.text = monster.battleText
+            monsterBattleTextLabel.isHidden = false
+            monsterTextImageView.isHidden = false
+            
+            let dismiss = DispatchTime.now() + 3
+            DispatchQueue.main.asyncAfter(deadline: dismiss){
+                self.monsterBattleTextLabel.isHidden = true
+                self.monsterTextImageView.isHidden = true
+            }
+        }
     }
-    
     func updateSummons(summon: Summon) {
         
-
+        
     }
-
+    
     func updateFirstSummon(summon: Summon) {
         firstSummonHealthLabel.text = "\(summon.health)"
         firstSummonSizeLabel.text = "\(summon.size)"
@@ -423,18 +480,37 @@ class battleScreenViewController: UIViewController {
             summonArrayTick.append(coolDownChange)
         }
         chosenSummonArray = summonArrayTick
+        
+        //replace all this with custom images?
+        abilityCoolDownLabelOne.text = "\(summonArrayTick[0].abilityCoolDownRemaining)"
+        abilityCoolDownLabelTwo.text = "\(summonArrayTick[1].abilityCoolDownRemaining)"
+        abilityCooldownLabelThree.text = "\(summonArrayTick[2].abilityCoolDownRemaining)"
+        abilityCoolDownLabelFour.text = "\(summonArrayTick[3].abilityCoolDownRemaining)"
+        
+        if summonArrayTick[0].abilityCoolDownRemaining == 0 {
+            abilityCoolDownLabelOne.isHidden = true
+        }
+        if summonArrayTick[1].abilityCoolDownRemaining == 0 {
+            abilityCoolDownLabelTwo.isHidden = true
+        }
+        if summonArrayTick[2].abilityCoolDownRemaining == 0 {
+            abilityCooldownLabelThree.isHidden = true
+        }
+        if summonArrayTick[3].abilityCoolDownRemaining == 0 {
+            abilityCoolDownLabelFour.isHidden = true
+        }
     }
     
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toRewardsSegue" {
             guard let summonArray = chosenSummonArray else {return}
             let destinationVC = segue.destination as? rewardsScreenViewController
             destinationVC?.summonArray = summonArray
         }
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
 }

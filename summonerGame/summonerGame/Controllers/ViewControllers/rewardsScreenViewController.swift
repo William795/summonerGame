@@ -18,6 +18,7 @@ class rewardsScreenViewController: UIViewController {
     @IBOutlet weak var rewardsCollectionView: UICollectionView!
     @IBOutlet weak var continueOnButton: UIButton!
     @IBOutlet weak var upgradeInstructionsLabel: UILabel!
+    @IBOutlet weak var plusManaLabel: UILabel!
     
     //keeping track of selected cell
     var selectedUpgrade: IndexPath? {
@@ -44,6 +45,13 @@ class rewardsScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if PlayerController.sharedPlayer.currentPlayer.maxMana % 3 == 2 {
+            plusManaLabel.text = "+1 mana and regen"
+        }else{
+            plusManaLabel.text = "+1 mana"
+        }
+            
+        
         if MonsterController.sharedMonster.currentMonster?.defeted == false {
             canUpgrade = true
             continueOnButton.isHidden = true

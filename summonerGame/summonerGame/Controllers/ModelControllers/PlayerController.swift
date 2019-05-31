@@ -26,7 +26,8 @@ class PlayerController {
     func newPlayerTurn (player: Player) {
         
         if player.currentMana < player.maxMana {
-            player.currentMana += player.maxMana / 5
+            player.currentMana += player.maxMana / 3
+            player.currentMana > player.maxMana ? player.currentMana = player.maxMana : nil
         }
         updatePlayer(player: player)
         //update stats based on upkeep gains and losses

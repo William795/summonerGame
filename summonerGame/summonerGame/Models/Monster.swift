@@ -18,7 +18,7 @@ class Monster {
     let name: String
     let title: String
     let flavorText: String
-    let battleText: String
+    var battleText: String
     let difficulty: Int
     let difficultyImage: UIImage
     

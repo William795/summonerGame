@@ -21,28 +21,41 @@ class SummonAbilityController {
             var summonArray: [Summon] = []
             for summon in player.summonArray {
                 var summonChange = summon
-                summonChange.attack += summon.abilityLevel
+                summonChange.attack += 1
                 summonArray.append(summonChange)
             }
             player.summonArray = summonArray
             
         case 2:
             //MARK: Archer ability
-            monster.health -= summon.abilityLevel * 10
+            monster.health -= summon.attack * 2
             
         case 3:
             //MARK: Dogo ability
-            monster.attackDamage -= summon.abilityLevel
+            monster.attackDamage -= 1
             if monster.attackDamage < 1 {
                 monster.attackDamage = 1
             }
             
         case 4:
             //MARK: Slime ability
-            monster.attackSize -= summon.abilityLevel
+            monster.attackSize -= 1
             if monster.attackSize < 0 {
                 monster.attackSize = 0
             }
+        case 5:
+            var summonArray: [Summon] = []
+            for summon in player.summonArray {
+                var summonChange = summon
+                summonChange.health += 1
+                summonChange.health > summonChange.maxHealth ? summonChange.health = summonChange.maxHealth : nil
+                summonArray.append(summonChange)
+            }
+            player.currentHealth < player.maxHealth ? player.currentHealth += 1 : nil
+            player.summonArray = summonArray
+            
+        case 6:
+            player.currentMana < player.maxMana ? player.currentMana += 1 : nil
             
         default:
             return

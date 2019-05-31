@@ -22,6 +22,7 @@ class summonSelectionCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var summonAbilityLabel: UILabel!
     @IBOutlet weak var summonSizeLabel: UILabel!
     @IBOutlet weak var summonManaCostLabel: UILabel!
+    @IBOutlet weak var summonNameLabel: UILabel!
     
     
     func updateView(){
@@ -32,5 +33,6 @@ class summonSelectionCollectionViewCell: UICollectionViewCell {
         summonAbilityLabel.text = summon.ability
         summonSizeLabel.text = "\(summon.size)"
         summonManaCostLabel.text = "\(summon.cost)"
+        summonNameLabel.text = summon.name
     }
 }

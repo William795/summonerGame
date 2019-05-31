@@ -21,7 +21,13 @@ class rewardsCollectionViewCell: UICollectionViewCell {
     
     func updateCell() {
         guard let summonsUsed = summonsUsed else {return}
+        
+        if summonsUsed.abilityLevel < 1 {
+            summonImageView.image = UIImage(named: "Torch")
+            summonAbilityLabel.text = ""
+        }else {
         summonImageView.image = summonsUsed.summonImage
-        summonAbilityLabel.text = summonsUsed.ability
+        summonAbilityLabel.text = ""
+        }
     }
 }
