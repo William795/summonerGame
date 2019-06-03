@@ -22,9 +22,9 @@ class rewardsCollectionViewCell: UICollectionViewCell {
     func updateCell() {
         guard let summonsUsed = summonsUsed else {return}
         
-        if summonsUsed.abilityLevel < 1 {
+        if summonsUsed.abilityLevel > 1 {
             summonImageView.image = UIImage(named: "Torch")
-            summonAbilityLabel.text = ""
+            summonAbilityLabel.text = "No Upgrade Available"
         }else {
         summonImageView.image = summonsUsed.summonImage
         summonAbilityLabel.text = ""

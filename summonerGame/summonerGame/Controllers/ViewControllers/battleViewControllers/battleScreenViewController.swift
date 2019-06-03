@@ -384,9 +384,9 @@ class battleScreenViewController: UIViewController {
     }
     
     func updatePlayer(player: Player) {
-        playerHealthLabel.text = "\(currentPlayer.currentHealth)"
-        playerManaLabel.text = "\(currentPlayer.currentMana)"
-        playerSummonLabel.text = "\(currentPlayer.currentSummons)"
+        playerHealthLabel.text = "\(currentPlayer.currentHealth)/\(currentPlayer.maxHealth)"
+        playerManaLabel.text = "\(currentPlayer.currentMana)/ \(currentPlayer.maxMana)"
+        playerSummonLabel.text = "\(currentPlayer.currentSummons)/\(currentPlayer.maxSummons + 1)"
         currentPlayer.currentHealth < 1 ? defeatDisplay() : nil
     }
     
@@ -394,7 +394,7 @@ class battleScreenViewController: UIViewController {
         monsterImageView.image = currentMonster?.monsterImage
         monsterSizeLabel.text = "\(currentMonster?.attackSize ?? 0)"
         monsterDamageLabel.text = "\(currentMonster?.attackDamage ?? 0)"
-        monsterHealthLabel.text = "\(currentMonster?.health ?? 0)"
+        monsterHealthLabel.text = "\(currentMonster?.health ?? 0)/\(currentMonster?.maxHealth ?? 0)"
         monster.health < 1 ? victoryDisplay() : nil
         
         if monster.battleText.count > 3 {
@@ -415,7 +415,7 @@ class battleScreenViewController: UIViewController {
     }
     
     func updateFirstSummon(summon: Summon) {
-        firstSummonHealthLabel.text = "\(summon.health)"
+        firstSummonHealthLabel.text = "\(summon.health)/\(summon.maxHealth)"
         firstSummonSizeLabel.text = "\(summon.size)"
         firstSummonDamageLabel.text = "\(summon.attack)"
         firstSummonImageView.image = summon.summonImage
@@ -424,7 +424,7 @@ class battleScreenViewController: UIViewController {
     }
     
     func updateSecondSummon(summon: Summon){
-        secondSummonHealthLabel.text = "\(summon.health)"
+        secondSummonHealthLabel.text = "\(summon.health)/\(summon.maxHealth)"
         secondSummonSizeLabel.text = "\(summon.size)"
         secondSummonDamageLabel.text = "\(summon.attack)"
         secondSummonImageView.image = summon.summonImage
@@ -433,7 +433,7 @@ class battleScreenViewController: UIViewController {
     }
     
     func updateThirdSummon(summon: Summon) {
-        thirdSummonHealthLabel.text = "\(summon.health)"
+        thirdSummonHealthLabel.text = "\(summon.health)/\(summon.maxHealth)"
         thirdSummonSizeLabel.text = "\(summon.size)"
         thirdSummonDamageLabel.text = "\(summon.attack)"
         thirdSummonImageView.image = summon.summonImage
@@ -442,7 +442,7 @@ class battleScreenViewController: UIViewController {
     }
     
     func updateFourthSummon(summon: Summon) {
-        fourthSummonHealthLabel.text = "\(summon.health)"
+        fourthSummonHealthLabel.text = "\(summon.health)/\(summon.maxHealth)"
         fourthSummonSizeLabel.text = "\(summon.size)"
         fourthSummonDamageLabel.text = "\(summon.attack)"
         fourthSummonImageView.image = summon.summonImage
@@ -451,7 +451,7 @@ class battleScreenViewController: UIViewController {
     }
     
     func updateFithSummon(summon: Summon) {
-        fithSummonHealthLabel.text = "\(summon.health)"
+        fithSummonHealthLabel.text = "\(summon.health)/\(summon.maxHealth)"
         fithSummonSizeLabel.text = "\(summon.size)"
         fithSummonDamageLabel.text = "\(summon.attack)"
         fithSummonImageView.image = summon.summonImage

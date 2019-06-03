@@ -144,7 +144,7 @@ class MonsterMoveController {
         switch mage.moveNumber {
         case 1:
             mage.attackSize = 8
-            mage.attackDamage = 2
+            mage.attackDamage = 4
         case 2:
             mage.attackSize = 6
             mage.attackDamage = 14
@@ -184,17 +184,17 @@ class MonsterMoveController {
         switch brawler.moveNumber {
             
         case 1:
-            brawler.attackSize = 6 + brawlerDrunkeness
+            brawler.attackSize = 4 + brawlerDrunkeness
             brawler.attackDamage = 2 + brawlerDrunkeness
         case 2:
-            brawler.attackSize = 3 + brawlerDrunkeness
+            brawler.attackSize = 1 + brawlerDrunkeness
             brawler.attackDamage = 5 + brawlerDrunkeness
         case 3:
-            brawler.attackSize = 4 + brawlerDrunkeness
+            brawler.attackSize = 2 + brawlerDrunkeness
             brawler.attackDamage = 5 + brawlerDrunkeness
         case 4:
             brawlerDrunkeness += 1
-            brawler.health += 30
+            brawler.health += 50
             brawler.moveNumber = 0
             brawler.battleText = "I need a drink 'Gulp'"
         default:

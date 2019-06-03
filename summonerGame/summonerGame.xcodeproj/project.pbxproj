@@ -24,8 +24,6 @@
 		92071A4A229C48FB000A7B75 /* summonSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A49229C48FB000A7B75 /* summonSelectViewController.swift */; };
 		92071A4C229C491A000A7B75 /* battleScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A4B229C491A000A7B75 /* battleScreenViewController.swift */; };
 		92071A4E229C4929000A7B75 /* rewardsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A4D229C4929000A7B75 /* rewardsScreenViewController.swift */; };
-		92071A50229C4947000A7B75 /* redeploymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A4F229C4947000A7B75 /* redeploymentViewController.swift */; };
-		92071A52229C495A000A7B75 /* newSumonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A51229C495A000A7B75 /* newSumonViewController.swift */; };
 		92071A56229C9D16000A7B75 /* GlobalTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A55229C9D16000A7B75 /* GlobalTimer.swift */; };
 		92071A63229D93D5000A7B75 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A62229D93D5000A7B75 /* CollectionViewController.swift */; };
 		92071A65229D973E000A7B75 /* rewardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92071A64229D973E000A7B75 /* rewardsCollectionViewCell.swift */; };
@@ -77,8 +75,6 @@
 		92071A49229C48FB000A7B75 /* summonSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = summonSelectViewController.swift; sourceTree = "<group>"; };
 		92071A4B229C491A000A7B75 /* battleScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = battleScreenViewController.swift; sourceTree = "<group>"; };
 		92071A4D229C4929000A7B75 /* rewardsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rewardsScreenViewController.swift; sourceTree = "<group>"; };
-		92071A4F229C4947000A7B75 /* redeploymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = redeploymentViewController.swift; sourceTree = "<group>"; };
-		92071A51229C495A000A7B75 /* newSumonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newSumonViewController.swift; sourceTree = "<group>"; };
 		92071A55229C9D16000A7B75 /* GlobalTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTimer.swift; sourceTree = "<group>"; };
 		92071A62229D93D5000A7B75 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		92071A64229D973E000A7B75 /* rewardsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rewardsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -225,8 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				92071A4B229C491A000A7B75 /* battleScreenViewController.swift */,
-				92071A4F229C4947000A7B75 /* redeploymentViewController.swift */,
-				92071A51229C495A000A7B75 /* newSumonViewController.swift */,
 			);
 			path = battleViewControllers;
 			sourceTree = "<group>";
@@ -384,13 +378,11 @@
 				9227B026229EE81F006F2BDF /* monsterTableViewCell.swift in Sources */,
 				92071A40229C3061000A7B75 /* MonsterController.swift in Sources */,
 				9227B028229EFB0C006F2BDF /* TableViewController.swift in Sources */,
-				92071A52229C495A000A7B75 /* newSumonViewController.swift in Sources */,
 				92071A4A229C48FB000A7B75 /* summonSelectViewController.swift in Sources */,
 				92071A46229C48C7000A7B75 /* startingViewController.swift in Sources */,
 				92071A3E229C3051000A7B75 /* PlayerController.swift in Sources */,
 				9227B02A229F2EDE006F2BDF /* MonsterMoveController.swift in Sources */,
 				92071A4E229C4929000A7B75 /* rewardsScreenViewController.swift in Sources */,
-				92071A50229C4947000A7B75 /* redeploymentViewController.swift in Sources */,
 				92071A42229C3070000A7B75 /* SummonController.swift in Sources */,
 				92071A63229D93D5000A7B75 /* CollectionViewController.swift in Sources */,
 				92071A37229C3021000A7B75 /* Player.swift in Sources */,

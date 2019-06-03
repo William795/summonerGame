@@ -26,7 +26,7 @@ class MonsterController {
     
     var fireMage = Monster(health: 100, maxHealth: 200, attackSize: 4, attackDamage: 2, monsterImage: UIImage(named: "FireMage")!, defeted: false, name: "Fire Mage", title: "The Traveling FireStorm", flavorText: "'YES I HAVE FINALY MADE THE PERFECT SPELL' said the fire mage as the set himself on fire while runing through the woods", battleText: "burn Burn BURN!", difficulty: 4, difficultyImage: UIImage(named: "Difficulty4")!, moveSetNumber: 4, moveNumber: 1)
     
-    var drunkenBrawler = Monster(health: 100, maxHealth: 300, attackSize: 2, attackDamage: 6, monsterImage: UIImage(named: "Brawler")!, defeted: false, name: "Drunken Brawler", title: "The Drunk Puncher", flavorText: "Was declared a hero after brutally murddering a peaceful company of slimes wandering new a small village", battleText: "", difficulty: 5, difficultyImage: UIImage(named: "Difficulty5")!, moveSetNumber: 5, moveNumber: 1)
+    var drunkenBrawler = Monster(health: 100, maxHealth: 400, attackSize: 2, attackDamage: 6, monsterImage: UIImage(named: "Brawler")!, defeted: false, name: "Drunken Brawler", title: "The Drunk Puncher", flavorText: "Was declared a hero after brutally murddering a peaceful company of slimes wandering new a small village", battleText: "", difficulty: 5, difficultyImage: UIImage(named: "Difficulty5")!, moveSetNumber: 5, moveNumber: 1)
     
     func addToMonsterPool(monster: Monster){
         availableMonsterArray?.append(monster)
